@@ -29,3 +29,11 @@ export const LINK: List = {
   ],
   title: "লিঙ্ক",
 };
+
+export const NAVIGATION_LINKS = [
+  "হোম",
+  "বার্ষিক পরিক্ষার প্রস্ততি",
+  "শিক্ষকবৃন্দ",
+  "আমাদের দল",
+  "কমিউনিটি",
+];

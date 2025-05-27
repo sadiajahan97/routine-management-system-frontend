@@ -1,16 +1,12 @@
 import Image from "next/image";
 
-interface LogoProps {
-  width: number;
-}
-
-export function Logo({ width }: LogoProps) {
+export function Logo() {
   return (
     <Image
       alt="ACS Future School Logo"
-      height={(4 / 3) * width}
+      height={50}
       src="/logo.svg"
-      width={width}
+      width={40}
     />
   );
 }

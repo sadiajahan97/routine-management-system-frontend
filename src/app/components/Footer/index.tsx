@@ -13,7 +13,7 @@ export function Footer() {
       <div className="flex justify-between">
         <div className="flex flex-col gap-4">
           <div className="flex gap-4 mb-8">
-            <Logo width={50} />
+            <Logo />
             <div className="font-semibold text-xl w-32">
               গড়ছি আগামীর বাংলাদেশ
             </div>
