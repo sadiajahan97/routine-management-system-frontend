@@ -8,7 +8,7 @@ export function NavigationBar({ links }: NavigationBarProps) {
       <ul className="flex gap-4">
         {links.map((link, index) => (
           <li
-            className="font-semibold hover:text-green-g300 text-base text-neutral-b700"
+            className="font-semibold hover:cursor-pointer hover:text-green-g300 text-base text-neutral-b700"
             key={index}
           >
             {link}

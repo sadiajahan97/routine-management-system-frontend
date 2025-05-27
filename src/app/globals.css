@@ -42,6 +42,9 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --color-green-g300: var(--green-g300);
+  --color-neutral-b10: var(--neutral-b10);
+  --color-neutral-b20: var(--neutral-b20);
+  --color-neutral-b40: var(--neutral-b40);
   --color-neutral-b100: var(--neutral-b100);
   --color-neutral-b300: var(--neutral-b300);
   --color-neutral-b700: var(--neutral-b700);
@@ -81,6 +84,9 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --green-g300: #008643;
+  --neutral-b10: #f5f6f7;
+  --neutral-b20: #f3f3f7;
+  --neutral-b40: #dfe2e6;
   --neutral-b100: #757575;
   --neutral-b300: #575757;
   --neutral-b700: #1c1c1c;
