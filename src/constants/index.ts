@@ -1,6 +1,20 @@
+import {
+  AcademicProgramPaidClassIcon,
+  CqExamIcon,
+  McqExamIcon,
+  OneShotRevisionClassIcon,
+  PreparationBookIcon,
+  ResourceIcon,
+} from "@routine-management-system/components/icons";
+
 interface List {
   items: string[];
   title: string;
+}
+
+interface Resource {
+  icon: ResourceIcon;
+  name: string;
 }
 
 export const COMPANY_INFORMATION: List = {
@@ -36,4 +50,12 @@ export const NAVIGATION_LINKS = [
   "শিক্ষকবৃন্দ",
   "আমাদের দল",
   "কমিউনিটি",
+];
+
+export const RESOURCES: Resource[] = [
+  { icon: AcademicProgramPaidClassIcon, name: "একাডেমিক প্রোগ্রাম পেইড ক্লাস" },
+  { icon: OneShotRevisionClassIcon, name: "ওয়ান শট রিভিশন ক্লাস" },
+  { icon: PreparationBookIcon, name: "প্রিপারেশন বুক" },
+  { icon: McqExamIcon, name: "এমসিকিউ এক্সাম" },
+  { icon: CqExamIcon, name: "সিকিউ এক্সাম" },
 ];
