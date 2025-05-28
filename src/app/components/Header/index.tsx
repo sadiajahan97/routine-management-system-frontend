@@ -7,7 +7,7 @@ import { NavigationBar, Profile } from "./components";
 
 export function Header() {
   return (
-    <header className="border-b border-neutral-b40 flex items-center justify-between px-33.75 py-2">
+    <header className="bg-white border-b border-neutral-b40 flex items-center justify-between px-33.75 py-2 w-full">
       <div className="flex gap-12.75 items-center">
         <Logo />
         <NavigationBar links={NAVIGATION_LINKS} />

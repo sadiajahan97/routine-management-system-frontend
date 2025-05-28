@@ -9,7 +9,7 @@ import { List } from "./components";
 
 export function Footer() {
   return (
-    <footer className="border-neutral-b20 border-t flex flex-col gap-8 p-8">
+    <footer className="bg-white border-neutral-b20 border-t flex flex-col gap-8 p-8 w-full">
       <div className="flex justify-between">
         <div className="flex flex-col gap-4">
           <div className="flex gap-4 mb-8">

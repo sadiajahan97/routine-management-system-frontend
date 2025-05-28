@@ -1,12 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-enum LessonDateTimeIconColor {
-  GREEN_G300 = "#008643",
-  NEUTRAL_B100 = "#757575",
-  NEUTRAL_B700 = "#1c1c1c",
-}
-
 export type Timeline = "past" | "present" | "future";
 
 export function cn(...inputs: ClassValue[]) {
@@ -21,17 +15,6 @@ export function determineLessonDateTimeColor(timeline: Timeline) {
       return "text-green-g300";
     case "future":
       return "text-neutral-b700";
-  }
-}
-
-export function determineLessonDateTimeIconColor(timeline: Timeline) {
-  switch (timeline) {
-    case "past":
-      return LessonDateTimeIconColor.NEUTRAL_B100;
-    case "present":
-      return LessonDateTimeIconColor.GREEN_G300;
-    case "future":
-      return LessonDateTimeIconColor.NEUTRAL_B700;
   }
 }
 

@@ -1,7 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faClockFour } from "@fortawesome/free-regular-svg-icons";
 import { RESOURCES } from "@routine-management-system/constants";
-import { Timeline } from "@routine-management-system/lib";
+import {
+  determineLessonDateTimeColor,
+  Timeline,
+} from "@routine-management-system/lib";
 import { ResourceButton } from "./components";
 
 interface LessonDateTime {
@@ -13,9 +16,9 @@ interface LessonDateTime {
 }
 
 interface LessonProps {
-  chapter: string;
-  datetime: LessonDateTime;
-  subject: string;
+  chapter?: string;
+  datetime?: LessonDateTime;
+  subject?: string;
   timeline: Timeline;
 }
 
@@ -33,15 +36,19 @@ export function Lesson({
 }: LessonProps) {
   return (
     <div>
-      <div className="flex gap-3">
-        <div className="flex gap-2">
-          <FontAwesomeIcon icon={faCalendar} />
+      <div
+        className={`flex font-semibold gap-3 py-2 text-lg ${determineLessonDateTimeColor(
+          timeline
+        )}`}
+      >
+        <div className="flex gap-2 items-center">
+          <FontAwesomeIcon className="h-auto w-3" icon={faCalendar} />
           <div>
             {datetime.day} {datetime.month}, {datetime.year}
           </div>
         </div>
-        <div className="flex gap-2">
-          <FontAwesomeIcon icon={faClockFour} />
+        <div className="flex gap-2 items-center">
+          <FontAwesomeIcon className="h-auto w-3.25" icon={faClockFour} />
           <div>
             {datetime.hours} টা {datetime.minutes} মিনিট
           </div>

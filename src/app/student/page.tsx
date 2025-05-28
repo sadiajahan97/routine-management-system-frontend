@@ -1,3 +1,9 @@
+import { TimelineView } from "./components";
+
 export default function StudentPage() {
-  return <main></main>;
+  return (
+    <main className="bg-white w-fit">
+      <TimelineView />
+    </main>
+  );
 }

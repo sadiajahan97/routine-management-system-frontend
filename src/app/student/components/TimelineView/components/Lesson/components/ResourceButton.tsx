@@ -26,7 +26,7 @@ export function ResourceButton({
       className={`${determineResourceButtonColors(
         isGhost,
         timeline
-      )} flex gap-1 py-1 rounded-xl w-50.75`}
+      )} flex gap-1 py-1 rounded-[8px] w-50.75`}
     >
       <Icon
         color={
