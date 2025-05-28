@@ -1,3 +1,4 @@
+import { BANGLA_DIGITS } from "@routine-management-system/constants";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -32,4 +33,14 @@ export function determineResourceButtonColors(
     case "future":
       return "bg-neutral-b700 border-none text-white";
   }
+}
+
+export function translateEnglishNumberToBangla(number: number) {
+  return number
+    .toString()
+    .split("")
+    .map((index) => {
+      return BANGLA_DIGITS[parseFloat(index)];
+    })
+    .join("");
 }
