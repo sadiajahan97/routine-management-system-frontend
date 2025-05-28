@@ -7,6 +7,13 @@ import {
   ResourceIcon,
 } from "@routine-management-system/components/icons";
 
+export type ClassTypeValue = "INTENSE_MODE" | "MOCK_TEST" | "REGULAR";
+
+interface ClassType {
+  label: string;
+  value: ClassTypeValue;
+}
+
 interface List {
   items: string[];
   title: string;
@@ -42,6 +49,12 @@ export const BANGLA_WEEKDAYS = [
   "বৃহস্পতিবার",
   "শুক্রবার",
   "শনিবার",
+];
+
+export const CLASS_TYPES: ClassType[] = [
+  { label: "Intense Mode", value: "INTENSE_MODE" },
+  { label: "Mock Test", value: "MOCK_TEST" },
+  { label: "Regular", value: "REGULAR" },
 ];
 
 export const COMPANY_INFORMATION: List = {
