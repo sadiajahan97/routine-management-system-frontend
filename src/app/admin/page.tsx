@@ -11,7 +11,7 @@ import {
   getAllRoutines,
   Routine,
 } from "@routine-management-system/lib";
-import { DeleteButton } from "./components";
+import { CreateButton, DeleteButton } from "./components";
 
 export default async function AdminPage() {
   const {
@@ -50,6 +50,7 @@ export default async function AdminPage() {
           ))}
         </TableBody>
       </Table>
+      <CreateButton />
     </main>
   );
 }
