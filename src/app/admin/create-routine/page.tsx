@@ -1,0 +1,53 @@
+"use client";
+
+import { Input, Label } from "@routine-management-system/components/ui";
+import { ClassTypeValue } from "@routine-management-system/constants";
+import { useState } from "react";
+import { ClassTypePicker, DatePicker, Time, TimePicker } from "./components";
+
+export default function CreateRoutinePage() {
+  const [classType, setClassType] = useState<ClassTypeValue>();
+  const [chapter, setChapter] = useState<string>("");
+  const [date, setDate] = useState<Date>();
+  const [endTime, setEndTime] = useState<Time>();
+  const [startTime, setStartTime] = useState<Time>();
+  const [subject, setSubject] = useState<string>("");
+  return (
+    <main>
+      <form>
+        <div className="flex gap-4">
+          <Label htmlFor="subject">Subject</Label>
+          <Input
+            id="subject"
+            onChange={(event) => setSubject(event.target.value)}
+            value={subject}
+          />
+        </div>
+        <div className="flex gap-4">
+          <Label htmlFor="chapter">Chapter</Label>
+          <Input
+            id="chapter"
+            onChange={(event) => setChapter(event.target.value)}
+            value={chapter}
+          />
+        </div>
+        <div className="flex gap-4">
+          <Label>Class Type</Label>
+          <ClassTypePicker classType={classType} setClassType={setClassType} />
+        </div>
+        <div className="flex gap-4">
+          <Label>Date</Label>
+          <DatePicker date={date} setDate={setDate} />
+        </div>
+        <div className="flex gap-4">
+          <Label>Start Time</Label>
+          <TimePicker setTime={setStartTime} time={startTime} />
+        </div>
+        <div className="flex gap-4">
+          <Label>End Time</Label>
+          <TimePicker setTime={setEndTime} time={endTime} />
+        </div>
+      </form>
+    </main>
+  );
+}
