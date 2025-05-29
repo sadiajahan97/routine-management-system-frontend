@@ -12,8 +12,8 @@ import {
 import { Dispatch, SetStateAction } from "react";
 
 interface ClassTypePickerProps {
-  classType: ClassTypeValue | undefined;
-  setClassType: Dispatch<SetStateAction<ClassTypeValue | undefined>>;
+  classType: ClassTypeValue;
+  setClassType: Dispatch<SetStateAction<ClassTypeValue>>;
 }
 
 export function ClassTypePicker({
@@ -22,6 +22,7 @@ export function ClassTypePicker({
 }: ClassTypePickerProps) {
   return (
     <Select
+      defaultValue="REGULAR"
       onValueChange={(value) => setClassType(value as ClassTypeValue)}
       value={classType}
     >

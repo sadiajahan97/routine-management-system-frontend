@@ -9,21 +9,22 @@ import { HOURS, MINUTES } from "@routine-management-system/constants";
 import { Dispatch, SetStateAction } from "react";
 
 export interface Time {
-  hours?: string | undefined;
-  minutes?: string | undefined;
+  hours: string;
+  minutes: string;
 }
 
 interface TimePickerProps {
-  setTime: Dispatch<SetStateAction<Time | undefined>>;
-  time: Time | undefined;
+  setTime: Dispatch<SetStateAction<Time>>;
+  time: Time;
 }
 
 export function TimePicker({ setTime, time }: TimePickerProps) {
   return (
     <div className="flex gap-4">
       <Select
+        defaultValue={time.hours}
         onValueChange={(value) => setTime({ ...time, hours: value })}
-        value={time?.hours}
+        value={time.hours}
       >
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Hours" />
@@ -37,8 +38,9 @@ export function TimePicker({ setTime, time }: TimePickerProps) {
         </SelectContent>
       </Select>
       <Select
+        defaultValue={time.minutes}
         onValueChange={(value) => setTime({ ...time, minutes: value })}
-        value={time?.minutes}
+        value={time.minutes}
       >
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Minutes" />

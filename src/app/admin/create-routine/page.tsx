@@ -9,11 +9,17 @@ import { ClassTypePicker, DatePicker, Time, TimePicker } from "./components";
 
 export default function CreateRoutinePage() {
   const router = useRouter();
-  const [classType, setClassType] = useState<ClassTypeValue>();
+  const [classType, setClassType] = useState<ClassTypeValue>("REGULAR");
   const [chapter, setChapter] = useState<string>("");
   const [date, setDate] = useState<Date>();
-  const [endTime, setEndTime] = useState<Time>();
-  const [startTime, setStartTime] = useState<Time>();
+  const [endTime, setEndTime] = useState<Time>({
+    hours: "00",
+    minutes: "00",
+  });
+  const [startTime, setStartTime] = useState<Time>({
+    hours: "00",
+    minutes: "00",
+  });
   const [subject, setSubject] = useState<string>("");
   return (
     <main>
@@ -23,7 +29,9 @@ export default function CreateRoutinePage() {
           event.preventDefault();
           const routine = {
             chapter,
-            date: `${date?.getDate()}/${date?.getMonth()}/${date?.getFullYear()}`,
+            date: `${date?.getFullYear()}-${
+              (date?.getMonth() || 0) + 1
+            }-${date?.getDate()}`,
             endTime: `${endTime?.hours}:${endTime?.minutes}`,
             startTime: `${startTime?.hours}:${startTime?.minutes}`,
             subject,

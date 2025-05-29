@@ -11,7 +11,7 @@ import {
   getAllRoutines,
   Routine,
 } from "@routine-management-system/lib";
-import { CreateButton, DeleteButton } from "./components";
+import { CreateButton, DeleteButton, UpdateButton } from "./components";
 
 export default async function AdminPage() {
   const {
@@ -45,6 +45,9 @@ export default async function AdminPage() {
               <TableCell className="text-center">{routine.endTime}</TableCell>
               <TableCell>
                 <DeleteButton deleteRoutine={deleteRoutine} id={routine.id} />
+              </TableCell>
+              <TableCell>
+                <UpdateButton id={routine.id} />
               </TableCell>
             </TableRow>
           ))}

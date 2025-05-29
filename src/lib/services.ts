@@ -30,3 +30,7 @@ export async function getAllRoutines() {
 export async function getRoutine(id: string) {
   return await axios.get(`${BACKEND_URL}/routines/${id}`);
 }
+
+export async function updateRoutine(id: string, routine: Routine) {
+  await axios.put(`${BACKEND_URL}/routines/${id}`, { routine });
+}
