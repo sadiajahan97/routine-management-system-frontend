@@ -26,7 +26,7 @@ export function ClassTypePicker({
       value={classType}
     >
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Class Type" />
+        <SelectValue placeholder="Hours" />
       </SelectTrigger>
       <SelectContent>
         {CLASS_TYPES.map((classType, index) => (

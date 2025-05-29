@@ -3,10 +3,12 @@
 import { Button, Input, Label } from "@routine-management-system/components/ui";
 import { ClassTypeValue } from "@routine-management-system/constants";
 import { createRoutine } from "@routine-management-system/lib";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ClassTypePicker, DatePicker, Time, TimePicker } from "./components";
 
 export default function CreateRoutinePage() {
+  const router = useRouter();
   const [classType, setClassType] = useState<ClassTypeValue>();
   const [chapter, setChapter] = useState<string>("");
   const [date, setDate] = useState<Date>();
@@ -19,14 +21,16 @@ export default function CreateRoutinePage() {
         className="flex flex-col gap-4"
         onSubmit={async (event) => {
           event.preventDefault();
-          await createRoutine({
+          const routine = {
             chapter,
             date: `${date?.getDate()}/${date?.getMonth()}/${date?.getFullYear()}`,
             endTime: `${endTime?.hours}:${endTime?.minutes}`,
             startTime: `${startTime?.hours}:${startTime?.minutes}`,
             subject,
             type: classType!,
-          });
+          };
+          await createRoutine(routine);
+          router.push("/admin");
         }}
       >
         <div className="flex gap-4">
