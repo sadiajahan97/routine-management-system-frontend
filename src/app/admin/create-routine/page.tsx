@@ -1,7 +1,8 @@
 "use client";
 
-import { Input, Label } from "@routine-management-system/components/ui";
+import { Button, Input, Label } from "@routine-management-system/components/ui";
 import { ClassTypeValue } from "@routine-management-system/constants";
+import { createRoutine } from "@routine-management-system/lib";
 import { useState } from "react";
 import { ClassTypePicker, DatePicker, Time, TimePicker } from "./components";
 
@@ -14,7 +15,20 @@ export default function CreateRoutinePage() {
   const [subject, setSubject] = useState<string>("");
   return (
     <main>
-      <form>
+      <form
+        className="flex flex-col gap-4"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          await createRoutine({
+            chapter,
+            date: `${date?.getDate()}/${date?.getMonth()}/${date?.getFullYear()}`,
+            endTime: `${endTime?.hours}:${endTime?.minutes}`,
+            startTime: `${startTime?.hours}:${startTime?.minutes}`,
+            subject,
+            type: classType!,
+          });
+        }}
+      >
         <div className="flex gap-4">
           <Label htmlFor="subject">Subject</Label>
           <Input
@@ -47,6 +61,7 @@ export default function CreateRoutinePage() {
           <Label>End Time</Label>
           <TimePicker setTime={setEndTime} time={endTime} />
         </div>
+        <Button type="submit">Create</Button>
       </form>
     </main>
   );
