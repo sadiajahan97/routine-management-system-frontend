@@ -15,12 +15,21 @@ import {
   sortRoutines,
   translateEnglishNumberToBangla,
 } from "@routine-management-system/lib";
+import { Dispatch, SetStateAction } from "react";
 
-interface ChangeViewProps {
+interface GridViewProps {
   routines: (Routine & { id: string })[];
+  selectedId: string;
+  setRoutine: Dispatch<
+    SetStateAction<
+      Routine & {
+        id: string;
+      }
+    >
+  >;
 }
 
-export function ChangeView({ routines }: ChangeViewProps) {
+export function GridView({ routines, selectedId, setRoutine }: GridViewProps) {
   const sortedRoutines = sortRoutines(routines);
   const dates = Array.from(
     new Set(sortedRoutines.map((routine) => routine.date))
@@ -37,13 +46,15 @@ export function ChangeView({ routines }: ChangeViewProps) {
         parseFloat(b.split("-")[0].split(":")[1]))
   );
   return (
-    <Table>
+    <Table className="border border-neutral-b40">
       <TableHeader>
-        <TableRow>
-          <TableHead className="text-center">Date</TableHead>
+        <TableRow className="border-gray-g10 hover:bg-white">
+          <TableHead className="border-gray-g10 border-r font-medium text-center text-gray-g60 text-sm">
+            Date
+          </TableHead>
           {timeSlots.map((timeSlot, index) => (
             <TableHead
-              className="text-center"
+              className="border-gray-g10 border-r font-medium last:border-r-0 text-base text-center text-neutral-b100"
               key={index}
             >{`${translateEnglishNumberToBangla(
               timeSlot.split("-")[0]
@@ -56,8 +67,8 @@ export function ChangeView({ routines }: ChangeViewProps) {
       <TableBody>
         {dates.map((date, index) => {
           return (
-            <TableRow key={index}>
-              <TableCell className="text-center">
+            <TableRow className="border-gray-g10 hover:bg-white" key={index}>
+              <TableCell className="border-gray-g10 border-r font-medium text-base text-center text-neutral-b100">
                 <div>
                   {translateEnglishNumberToBangla(date.split("-")[2])}{" "}
                   {BANGLA_MONTHS[parseFloat(date.split("-")[1]) - 1]},{" "}
@@ -70,12 +81,23 @@ export function ChangeView({ routines }: ChangeViewProps) {
                 .map((routine) =>
                   timeSlots.map((timeSlot, index) =>
                     timeSlot === `${routine.startTime}-${routine.endTime}` ? (
-                      <TableCell className="text-center" key={index}>
+                      <TableCell
+                        onClick={() => setRoutine(routine)}
+                        className={`${
+                          routine.id === selectedId
+                            ? "bg-green-g50 text-green-g300"
+                            : "text-neutral-b100"
+                        } border-gray-g10 border-r font-medium hover:bg-green-g50 hover:cursor-pointer hover:text-green-g300 last:border-r-0 text-base text-center`}
+                        key={index}
+                      >
                         <div>{routine.subject}</div>
                         <div>{routine.chapter}</div>
                       </TableCell>
                     ) : (
-                      <TableCell key={index}></TableCell>
+                      <TableCell
+                        className="border-gray-g10 border-r last:border-r-0"
+                        key={index}
+                      ></TableCell>
                     )
                   )
                 )}

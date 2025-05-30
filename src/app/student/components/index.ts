@@ -1,2 +1,1 @@
-export * from "./ChangeView";
-export * from "./TimelineView";
+export * from "./View";

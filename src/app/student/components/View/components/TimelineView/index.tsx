@@ -4,13 +4,21 @@ import {
   sortRoutines,
   translateEnglishNumberToBangla,
 } from "@routine-management-system/lib";
+import { Dispatch, SetStateAction } from "react";
 import { Lesson } from "./components";
 
 interface TimelineViewProps {
   routines: (Routine & { id: string })[];
+  setRoutine: Dispatch<
+    SetStateAction<
+      Routine & {
+        id: string;
+      }
+    >
+  >;
 }
 
-export function TimelineView({ routines }: TimelineViewProps) {
+export function TimelineView({ routines, setRoutine }: TimelineViewProps) {
   return (
     <div className="flex flex-col gap-3">
       {sortRoutines(routines).map((routine) => {
@@ -36,6 +44,7 @@ export function TimelineView({ routines }: TimelineViewProps) {
               year: translateEnglishNumberToBangla(routine.date.split("-")[0]),
             }}
             key={routine.id}
+            onClick={() => setRoutine(routine)}
             subject={routine.subject}
             timeline={timeline}
           />

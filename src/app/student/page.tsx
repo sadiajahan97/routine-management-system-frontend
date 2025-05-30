@@ -1,5 +1,5 @@
 import { getAllRoutines, Routine } from "@routine-management-system/lib";
-import { ChangeView } from "./components";
+import { View } from "./components";
 
 export default async function StudentPage() {
   const {
@@ -11,7 +11,7 @@ export default async function StudentPage() {
   };
   return (
     <main className="bg-white w-fit">
-      <ChangeView routines={routines} />
+      <View routines={routines} />
     </main>
   );
 }
