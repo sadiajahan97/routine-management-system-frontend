@@ -1,31 +1,26 @@
 import { BANGLA_MONTHS } from "@routine-management-system/constants";
 import {
   Routine,
+  sortRoutines,
   translateEnglishNumberToBangla,
 } from "@routine-management-system/lib";
 import { Lesson } from "./components";
 
 interface TimelineViewProps {
-  routines: Routine[];
+  routines: (Routine & { id: string })[];
 }
 
 export function TimelineView({ routines }: TimelineViewProps) {
   return (
     <div className="flex flex-col gap-3">
-      {routines.map((routine, index) => {
-        const date = new Date(
-          parseFloat(routine.date.split("-")[0]),
-          parseFloat(routine.date.split("-")[1]) - 1,
-          parseFloat(routine.date.split("-")[2])
-        );
-        const now = new Date();
-        const today = new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          now.getDate()
-        );
+      {sortRoutines(routines).map((routine) => {
+        const today = new Date().toISOString().split("T")[0];
         const timeline =
-          date < today ? "past" : date > today ? "future" : "present";
+          routine.date === today
+            ? "present"
+            : new Date(routine.date) < new Date(today)
+            ? "past"
+            : "future";
         return (
           <Lesson
             chapter={routine.chapter}
@@ -40,7 +35,7 @@ export function TimelineView({ routines }: TimelineViewProps) {
               month: BANGLA_MONTHS[parseFloat(routine.date.split("-")[1]) - 1],
               year: translateEnglishNumberToBangla(routine.date.split("-")[0]),
             }}
-            key={index}
+            key={routine.id}
             subject={routine.subject}
             timeline={timeline}
           />

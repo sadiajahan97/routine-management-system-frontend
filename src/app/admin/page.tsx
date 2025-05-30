@@ -10,6 +10,7 @@ import {
   deleteRoutine,
   getAllRoutines,
   Routine,
+  sortRoutines,
 } from "@routine-management-system/lib";
 import { CreateButton, DeleteButton, UpdateButton } from "./components";
 
@@ -35,7 +36,7 @@ export default async function AdminPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {routines.map((routine) => (
+          {sortRoutines(routines).map((routine) => (
             <TableRow key={routine.id}>
               <TableCell className="text-center">{routine.subject}</TableCell>
               <TableCell className="text-center">{routine.chapter}</TableCell>

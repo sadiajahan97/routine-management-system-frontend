@@ -7,7 +7,7 @@ export default async function StudentPage() {
       data: { routines },
     },
   } = (await getAllRoutines()) as {
-    data: { data: { routines: Routine[] } };
+    data: { data: { routines: (Routine & { id: string })[] } };
   };
   return (
     <main className="bg-white w-fit">

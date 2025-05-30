@@ -1,6 +1,7 @@
 import { BANGLA_DIGITS } from "@routine-management-system/constants";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Routine } from "./services";
 
 export type Timeline = "past" | "present" | "future";
 
@@ -33,6 +34,14 @@ export function determineResourceButtonColors(
     case "future":
       return "bg-neutral-b700 border-none text-white";
   }
+}
+
+export function sortRoutines(routines: (Routine & { id: string })[]) {
+  return routines.sort(
+    (a, b) =>
+      new Date(`${a.date}T${a.startTime}`).getTime() -
+      new Date(`${b.date}T${b.startTime}`).getTime()
+  );
 }
 
 export function translateEnglishNumberToBangla(number: string) {
