@@ -27,12 +27,12 @@ export function determineResourceButtonColors(
   switch (timeline) {
     case "past":
       return isGhost
-        ? "bg-white border border-b40 text-b55"
-        : "bg-neutral-b300 border-none text-white";
+        ? "bg-white border border-b40 hover:bg-white text-b55"
+        : "bg-neutral-b300 border-none hover:bg-neutral-b300 text-white";
     case "present":
-      return "bg-green-g300 border-none text-white";
+      return "bg-green-g300 border-0 hover:bg-white hover:border hover:border-green-g300 hover:cursor-pointer hover:text-green-g300 text-white";
     case "future":
-      return "bg-neutral-b700 border-none text-white";
+      return "bg-neutral-b700 border-none hover:bg-neutral-b700 text-white";
   }
 }
 

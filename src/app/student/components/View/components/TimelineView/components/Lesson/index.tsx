@@ -60,7 +60,7 @@ export function Lesson({
       <div
         className={`border ${
           timeline === "present" ? "border-green-g300" : "border-neutral-b40"
-        } flex flex-col gap-3 p-3 rounded-[12px]`}
+        } flex flex-col gap-3 hover:cursor-pointer p-3 rounded-[12px]`}
         onClick={onClick}
       >
         <div className="flex flex-col gap-1">

@@ -10,7 +10,7 @@ export default async function StudentPage() {
     data: { data: { routines: (Routine & { id: string })[] } };
   };
   return (
-    <main className="bg-white w-fit">
+    <main className="w-[1170px]">
       <View routines={routines} />
     </main>
   );
