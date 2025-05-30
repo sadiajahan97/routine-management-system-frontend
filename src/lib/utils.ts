@@ -44,11 +44,11 @@ export function sortRoutines(routines: (Routine & { id: string })[]) {
   );
 }
 
-export function translateEnglishNumberToBangla(number: string) {
-  return number
+export function translateEnglishNumberToBangla(string: string) {
+  return string
     .split("")
-    .map((index) => {
-      return BANGLA_DIGITS[parseFloat(index)];
+    .map((char) => {
+      return /\d/.test(char) ? BANGLA_DIGITS[parseFloat(char)] : char;
     })
     .join("");
 }

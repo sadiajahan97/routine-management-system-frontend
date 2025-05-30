@@ -1,5 +1,5 @@
 import { getAllRoutines, Routine } from "@routine-management-system/lib";
-import { TimelineView } from "./components";
+import { ChangeView } from "./components";
 
 export default async function StudentPage() {
   const {
@@ -11,7 +11,7 @@ export default async function StudentPage() {
   };
   return (
     <main className="bg-white w-fit">
-      <TimelineView routines={routines} />
+      <ChangeView routines={routines} />
     </main>
   );
 }
