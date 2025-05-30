@@ -35,9 +35,8 @@ export function determineResourceButtonColors(
   }
 }
 
-export function translateEnglishNumberToBangla(number: number) {
+export function translateEnglishNumberToBangla(number: string) {
   return number
-    .toString()
     .split("")
     .map((index) => {
       return BANGLA_DIGITS[parseFloat(index)];
