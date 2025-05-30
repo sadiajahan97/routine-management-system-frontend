@@ -2,13 +2,13 @@ import { getRoutine, Routine } from "@routine-management-system/lib";
 import { UpdateRoutineForm } from "./components";
 
 interface UpdateRoutinePageParams {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function UpdateRoutinePage({
   params,
 }: UpdateRoutinePageParams) {
-  const { id } = params;
+  const { id } = await params;
   const {
     data: {
       data: { routine },
