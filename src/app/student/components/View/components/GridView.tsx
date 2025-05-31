@@ -65,9 +65,12 @@ export function GridView({ routines, selectedId, setRoutine }: GridViewProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {dates.map((date, index) => {
+        {dates.map((date, dateIndex) => {
           return (
-            <TableRow className="border-gray-g10 hover:bg-white" key={index}>
+            <TableRow
+              className="border-gray-g10 hover:bg-white"
+              key={dateIndex}
+            >
               <TableCell className="border-gray-g10 border-r font-medium text-base text-center text-neutral-b100">
                 <div>
                   {translateEnglishNumberToBangla(date.split("-")[2])}{" "}
@@ -76,31 +79,32 @@ export function GridView({ routines, selectedId, setRoutine }: GridViewProps) {
                 </div>
                 <div>{BANGLA_WEEKDAYS[new Date(date).getDay()]}</div>
               </TableCell>
-              {sortedRoutines
-                .filter((routine) => routine.date === date)
-                .map((routine) =>
-                  timeSlots.map((timeSlot, index) =>
-                    timeSlot === `${routine.startTime}-${routine.endTime}` ? (
-                      <TableCell
-                        onClick={() => setRoutine(routine)}
-                        className={`${
-                          routine.id === selectedId
-                            ? "bg-green-g50 text-green-g300"
-                            : "text-neutral-b100"
-                        } border-gray-g10 border-r font-medium hover:bg-green-g50 hover:cursor-pointer hover:text-green-g300 last:border-r-0 text-base text-center`}
-                        key={index}
-                      >
-                        <div>{routine.subject}</div>
-                        <div>{routine.chapter}</div>
-                      </TableCell>
-                    ) : (
-                      <TableCell
-                        className="border-gray-g10 border-r last:border-r-0"
-                        key={index}
-                      ></TableCell>
-                    )
-                  )
-                )}
+              {timeSlots.map((timeSlot, timeSlotIndex) => {
+                const routine = sortedRoutines.find(
+                  (routine) =>
+                    routine.date === date &&
+                    `${routine.startTime}-${routine.endTime}` === timeSlot
+                );
+                return routine ? (
+                  <TableCell
+                    onClick={() => setRoutine(routine)}
+                    className={`${
+                      routine.id === selectedId
+                        ? "bg-green-g50 text-green-g300"
+                        : "text-neutral-b100"
+                    } border-gray-g10 border-r font-medium hover:bg-green-g50 hover:cursor-pointer hover:text-green-g300 last:border-r-0 text-base text-center`}
+                    key={`${dateIndex}${timeSlotIndex}`}
+                  >
+                    <div>{routine.subject}</div>
+                    <div>{routine.chapter}</div>
+                  </TableCell>
+                ) : (
+                  <TableCell
+                    className="border-gray-g10 border-r last:border-r-0"
+                    key={`${dateIndex}${timeSlotIndex}`}
+                  ></TableCell>
+                );
+              })}
             </TableRow>
           );
         })}
